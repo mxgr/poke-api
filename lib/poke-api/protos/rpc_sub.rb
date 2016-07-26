@@ -51,6 +51,20 @@ Google::Protobuf::DescriptorPool.generated_pool.build do
     optional :deleted_item_key, :int64, 2
     optional :inventory_item_data, :message, 3, "RpcSub.InventoryItemData"
   end
+  add_message "RpcSub.RecycleInventoryItemRequest" do
+    optional :item_id, :enum, 1, "RpcEnum.ItemId"
+    optional :count, :int32, 2
+  end
+  add_message "RpcSub.RecycleInventoryItemResponse" do
+    optional :result, :enum, 1, "RpcSub.RecycleInventoryItemResponse.Result"
+    optional :new_count, :int32, 2
+  end
+  add_enum "RpcSub.RecycleInventoryItemResponse.Result" do
+    value :UNSET, 0
+    value :SUCCESS, 1
+    value :ERROR_NOT_ENOUGH_COPIES, 2
+    value :ERROR_CANNOT_RECYCLE_INCUBATORS, 3
+  end
   add_message "RpcSub.InventoryItemData" do
     optional :pokemon, :message, 1, "RpcSub.PokemonData"
     optional :item, :message, 2, "RpcSub.Item"
@@ -855,4 +869,7 @@ module RpcSub
   PokeballAttributes = Google::Protobuf::DescriptorPool.generated_pool.lookup("RpcSub.PokeballAttributes").msgclass
   PotionAttributes = Google::Protobuf::DescriptorPool.generated_pool.lookup("RpcSub.PotionAttributes").msgclass
   ReviveAttributes = Google::Protobuf::DescriptorPool.generated_pool.lookup("RpcSub.ReviveAttributes").msgclass
+  RecycleInventoryItemRequest = Google::Protobuf::DescriptorPool.generated_pool.lookup("RpcSub.RecycleInventoryItemRequest").msgclass
+  RecycleInventoryItemResponse = Google::Protobuf::DescriptorPool.generated_pool.lookup("RpcSub.RecycleInventoryItemResponse").msgclass
+  RecycleInventoryItemResponse::Result = Google::Protobuf::DescriptorPool.generated_pool.lookup("RpcSub.RecycleInventoryItemResponse.Result").enummodule
 end

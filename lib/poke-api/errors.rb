@@ -31,9 +31,21 @@ module Poke
         end
       end
 
+      class GoogleTwoFactorAuthenticationFailure < StandardError
+        def initialize(response)
+          super("Two-factor authentication not supported. Create an app-specific password to log in.")
+        end
+      end
+
       class LoginFailure < StandardError
         def initialize(provider, error)
           super("Unable to login to #{provider} => [#{error} @ #{error.backtrace.first}]")
+        end
+      end
+
+      class InvalidEndpoint < StandardError
+        def initialize
+          super("Unable to fetch endpoint, please try to login again.")
         end
       end
     end

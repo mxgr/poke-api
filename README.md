@@ -1,3 +1,4 @@
+[![Gem Version](https://badge.fury.io/rb/poke-go-api.svg)](https://badge.fury.io/rb/poke-go-api) [![Code Climate](https://codeclimate.com/github/nabeelamjad/poke-api/badges/gpa.svg)](https://codeclimate.com/github/nabeelamjad/poke-api) [![Issue Count](https://codeclimate.com/github/nabeelamjad/poke-api/badges/issue_count.svg)](https://codeclimate.com/github/nabeelamjad/poke-api)
 # Poke API - A Ruby API gem for Pokémon GO.
 Poke API is a port for Ruby from [pgoapi](https://github.com/tejado/pgoapi) and also allows for any automatic parsing of a requests and responses.
 
@@ -15,12 +16,14 @@ Poke API is a port for Ruby from [pgoapi](https://github.com/tejado/pgoapi) and 
 ## Installation
 You can use bundler and refer directly to this repository
 ```
-gem 'poke-api',
+gem 'poke-go-api',
     git: "https://github.com/nabeelamjad/poke-api.git",
-    tag: '0.0.3'
+    tag: '0.0.8'
 ```
 
-Or, alternatively you can download the repository and run ``gem build poke-api.gemspec`` followed with ``gem install poke-api-0.0.3.gem``
+Or, alternatively you can download the repository and run ``gem build poke-api.gemspec`` followed with ``gem install poke-api-0.0.8.gem``
+
+The gem is also available by using ``gem install poke-go-api`` (poke-api was taken as a name already).
 
 **NOTE** - This gem relies on header files for Ruby to install the ``google-protobuf`` gem.
   * Windows: You will need the Ruby DevKit applied to your Ruby, please see [RubyInstaller](http://rubyinstaller.org/downloads/)
@@ -103,7 +106,7 @@ client.store_location('New York')
 client.login('username@gmail.com', 'password', 'google')
 
 # Add RPC calls
-client.recycle_inventory_item(item_id: :ITEM_POKEBALL, count: 2)
+client.recycle_inventory_item(item_id: 2, count: 2)
 
 # You can inspect the client before performing the call
 puts client.inspect
@@ -130,7 +133,10 @@ puts call.response.inspect
   :RECYCLE_INVENTORY_ITEM = >{
     :result=>:SUCCESS, 
     :new_count=>14
-  }
+  },
+  :status_code => 1,
+  :api_url => "",
+  :error => ""
 }
 ```
 
@@ -165,4 +171,5 @@ Any contributions are most welcome, I don't have much time to spend on this proj
 
 # Credits
 [tejado](https://github.com/tejado/pgoapi) - Pretty much everything as this repository is a direct 'conversion' to the best of my ability  
-[AeonLucid](https://github.com/AeonLucid/POGOProtos) - Protobufs
+[AeonLucid](https://github.com/AeonLucid/POGOProtos) - Protobufs  
+[xssc](https://github.com/xssc/gpsoauth) - GPSOauth (Google Login)

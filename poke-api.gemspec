@@ -4,13 +4,13 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require_relative 'lib/poke-api/version'
 
 Gem::Specification.new do |spec|
-  spec.name = 'poke-api'
+  spec.name = 'poke-go-api'
   spec.summary = 'Poke API'
 
   spec.description = 'An API wrapper for Pokemon GO'
   spec.version = Poke::API::VERSION
 
-  spec.date = '2016-07-22'
+  spec.date = '2016-08-03'
   spec.authors = ['Nabeel Amjad']
   spec.licenses = ['MIT']
 
